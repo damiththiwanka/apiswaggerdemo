@@ -1,0 +1,74 @@
+library swagger.api;
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/browser_client.dart';
+import 'package:http/http.dart';
+
+part 'api_client.dart';
+part 'api_helper.dart';
+part 'api_exception.dart';
+part 'auth/authentication.dart';
+part 'auth/api_key_auth.dart';
+part 'auth/oauth.dart';
+part 'auth/http_basic_auth.dart';
+
+part 'api/charging_station_manager_api.dart';
+part 'api/collection_builder_api.dart';
+part 'api/device_manager_api.dart';
+part 'api/ocpp_api.dart';
+part 'api/object_builder_api.dart';
+part 'api/process_builder_api.dart';
+part 'api/protocol_variable_mapper_api.dart';
+part 'api/schema_builder_api.dart';
+part 'api/script_builder_api.dart';
+part 'api/user_manager_api.dart';
+part 'api/user_password_manager_api.dart';
+part 'api/user_role_manager_api.dart';
+part 'api/vehicle_manager_api.dart';
+
+part 'model/assign_user_role_request.dart';
+part 'model/avatar_update_request.dart';
+part 'model/charging_station_schema_model.dart';
+part 'model/collection_builder_model.dart';
+part 'model/component_mapping_model.dart';
+part 'model/component_type.dart';
+part 'model/country_codes.dart';
+part 'model/create_new_user_request.dart';
+part 'model/create_role_request.dart';
+part 'model/decline_user_role_request.dart';
+part 'model/delete_user_request.dart';
+part 'model/evse_type.dart';
+part 'model/get_variable_data_type.dart';
+part 'model/http_validation_error.dart';
+part 'model/i_forget_request.dart';
+part 'model/new_manufacture.dart';
+part 'model/new_vehicle.dart';
+part 'model/new_vehicle_model.dart';
+part 'model/otp_request.dart';
+part 'model/object_builder_model.dart';
+part 'model/password_change.dart';
+part 'model/password_reset.dart';
+part 'model/password_reset_token_request.dart';
+part 'model/process_builder_model.dart';
+part 'model/protocol_builder_model.dart';
+part 'model/protocol_mapper_model.dart';
+part 'model/register_charging_station.dart';
+part 'model/schema_builder_model.dart';
+part 'model/schema_item.dart';
+part 'model/script_builder_model.dart';
+part 'model/script_executor_model.dart';
+part 'model/set_password_request.dart';
+part 'model/update_another_user_request.dart';
+part 'model/update_user_request.dart';
+part 'model/update_user_vehicle.dart';
+part 'model/user_activation_request.dart';
+part 'model/user_login_request.dart';
+part 'model/user_register_request.dart';
+part 'model/user_role_assignment.dart';
+part 'model/validation_error.dart';
+part 'model/variable_type.dart';
+part 'model/visit_request.dart';
+
+
+ApiClient defaultApiClient = new ApiClient();
