@@ -1,33 +1,26 @@
+// @dart=2.9
 part of swagger.api;
 
 class NewVehicle {
-  
   String userId = null;
-  
 
   String manufactureName = null;
-  
 
   String modelName = null;
-  
 
   int modelYear = null;
-   // range from 2000 to //
+  // range from 2000 to //
 
   String bodyType = null;
-  
 
   String color = null;
-  
 
   String connectorType = null;
-  
 
   String powerLevel = null;
-  
 
   String image = null;
-  
+
   NewVehicle();
 
   @override
@@ -37,33 +30,15 @@ class NewVehicle {
 
   NewVehicle.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    userId =
-        json['user_id']
-    ;
-    manufactureName =
-        json['manufacture_name']
-    ;
-    modelName =
-        json['model_name']
-    ;
-    modelYear =
-        json['model_year']
-    ;
-    bodyType =
-        json['body_type']
-    ;
-    color =
-        json['color']
-    ;
-    connectorType =
-        json['connector_type']
-    ;
-    powerLevel =
-        json['power_level']
-    ;
-    image =
-        json['image']
-    ;
+    userId = json['user_id'];
+    manufactureName = json['manufacture_name'];
+    modelName = json['model_name'];
+    modelYear = json['model_year'];
+    bodyType = json['body_type'];
+    color = json['color'];
+    connectorType = json['connector_type'];
+    powerLevel = json['power_level'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -77,19 +52,22 @@ class NewVehicle {
       'connector_type': connectorType,
       'power_level': powerLevel,
       'image': image
-     };
+    };
   }
 
   static List<NewVehicle> listFromJson(List<dynamic> json) {
-    return json == null ? new List<NewVehicle>() : json.map((value) => new NewVehicle.fromJson(value)).toList();
+    return json == null
+        ? new List<NewVehicle>()
+        : json.map((value) => new NewVehicle.fromJson(value)).toList();
   }
 
-  static Map<String, NewVehicle> mapFromJson(Map<String, Map<String, dynamic>> json) {
+  static Map<String, NewVehicle> mapFromJson(
+      Map<String, Map<String, dynamic>> json) {
     var map = new Map<String, NewVehicle>();
     if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new NewVehicle.fromJson(value));
+      json.forEach((String key, Map<String, dynamic> value) =>
+          map[key] = new NewVehicle.fromJson(value));
     }
     return map;
   }
 }
-

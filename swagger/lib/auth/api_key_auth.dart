@@ -1,7 +1,7 @@
+// @dart=2.9
 part of swagger.api;
 
 class ApiKeyAuth implements Authentication {
-
   final String location;
   final String paramName;
   String apiKey;
@@ -10,7 +10,8 @@ class ApiKeyAuth implements Authentication {
   ApiKeyAuth(this.location, this.paramName);
 
   @override
-  void applyToParams(List<QueryParam> queryParams, Map<String, String> headerParams) {
+  void applyToParams(
+      List<QueryParam> queryParams, Map<String, String> headerParams) {
     String value;
     if (apiKeyPrefix != null) {
       value = '$apiKeyPrefix $apiKey';

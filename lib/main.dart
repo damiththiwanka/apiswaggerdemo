@@ -1,36 +1,44 @@
+import 'package:base3/src/blocs/base/bloc_provider.dart';
+import 'package:base3/src/blocs/translation/language_bloc.dart';
+import 'package:base3/src/helpers/nav/navigation_routes.dart';
+import 'package:base3/src/values/app_text_styles.dart';
+import 'package:base3/src/values/colors.dart';
+import 'package:base3/src/values/images.dart';
+import 'package:base3/src/widgets/buttons/primary_button_grey.dart';
+import 'package:base3/src/widgets/buttons/primary_button_long_orange.dart';
+import 'package:base3/src/widgets/buttons/primary_button_orange.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BaseBlocProvider(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, LanguageState) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(title: 'Flutter Sheha'),
+          onGenerateRoute: NavigationRoutes.generateRoutes,
+          //initialRoute: NavigationRoutes.SPLASH_LOGO,
+          //initialRoute: NavigationRoutes.SPLASH_LOGO,
+        );
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -63,53 +71,109 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              AppColors.backgroundGradientColorThird,
+              AppColors.backgroundGradientColorSecond,
+              AppColors.backgroundGradientColorFirst,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.backgroundGradientColorThird.withOpacity(0.4),
+              spreadRadius: 3,
+              blurRadius: 8,
+              offset: Offset(5, 5),
+            ),
+          ],
+          // color: colors.AppColors.buttonColor,
+        ),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: Container()),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                height: 60,
+                width: 300,
+                child: Image.asset(
+                  AppImages.logoCombination,
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.only(right: 30, left: 30, bottom: 20, top: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.asset(
+                  AppImages.backgroundMainImage,
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              "Welcome",
+              style: AppTextStyles().welcomeTextStyle(),
             ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              "Space for the tag line",
+              style: AppTextStyles().primaryColorLightFont16TextStyle(),
+            ),
+            Expanded(child: Container()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(child: Container()),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, NavigationRoutes.WELCOME_SCREEN);
+                    },
+                    child: PrimaryButtonGrey(
+                      buttonText: 'SKIP',
+                      opacity: 1,
+                      buttonWidthRatio: 0.5,
+                    )),
+                SizedBox(
+                  width: 25,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, NavigationRoutes.WELCOME_SCREEN_SECOND);
+                    },
+                    child: PrimaryButtonOrange(
+                      buttonText: 'NEXT',
+                      opacity: 1,
+                      buttonWidthRatio: 0.5,
+                    )),
+                Expanded(child: Container()),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Expanded(child: Container()),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

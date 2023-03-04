@@ -1,9 +1,9 @@
+// @dart=2.9
 part of swagger.api;
 
 class OTPRequest {
-  
   String registeredEmail = null;
-  
+
   OTPRequest();
 
   @override
@@ -13,27 +13,26 @@ class OTPRequest {
 
   OTPRequest.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    registeredEmail =
-        json['registered_email']
-    ;
+    registeredEmail = json['registered_email'];
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'registered_email': registeredEmail
-     };
+    return {'registered_email': registeredEmail};
   }
 
   static List<OTPRequest> listFromJson(List<dynamic> json) {
-    return json == null ? new List<OTPRequest>() : json.map((value) => new OTPRequest.fromJson(value)).toList();
+    return json == null
+        ? new List<OTPRequest>()
+        : json.map((value) => new OTPRequest.fromJson(value)).toList();
   }
 
-  static Map<String, OTPRequest> mapFromJson(Map<String, Map<String, dynamic>> json) {
+  static Map<String, OTPRequest> mapFromJson(
+      Map<String, Map<String, dynamic>> json) {
     var map = new Map<String, OTPRequest>();
     if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new OTPRequest.fromJson(value));
+      json.forEach((String key, Map<String, dynamic> value) =>
+          map[key] = new OTPRequest.fromJson(value));
     }
     return map;
   }
 }
-

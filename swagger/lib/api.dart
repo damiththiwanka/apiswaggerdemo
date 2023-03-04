@@ -1,3 +1,4 @@
+// @dart=2.9
 library swagger.api;
 
 import 'dart:async';
@@ -33,7 +34,6 @@ part 'model/charging_station_schema_model.dart';
 part 'model/collection_builder_model.dart';
 part 'model/component_mapping_model.dart';
 part 'model/component_type.dart';
-part 'model/country_codes.dart';
 part 'model/create_new_user_request.dart';
 part 'model/create_role_request.dart';
 part 'model/decline_user_role_request.dart';
@@ -69,6 +69,5 @@ part 'model/user_role_assignment.dart';
 part 'model/validation_error.dart';
 part 'model/variable_type.dart';
 part 'model/visit_request.dart';
-
 
 ApiClient defaultApiClient = new ApiClient();

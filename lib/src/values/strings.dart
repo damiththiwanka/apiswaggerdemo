@@ -1,0 +1,58 @@
+/// Project MadayaS
+/// Create by Madushanka Madakumbura on 11/17/21 13:29
+///
+
+
+enum Flavor { DEV, UAT, QA, PRODUCTION }
+enum KeyBoardType { NUM_ONLY, NUM, TEXT, EMAIL }
+enum ValidationType {
+  NIC,
+  MOBILE,
+  TELEPHONE,
+  PASSWORD,
+  EMAIL,
+  NORMAL,
+  CURRENT_MOBILE,
+  REPEAT_PASSWORD,
+  REPEAT_MOBILE,
+  AMOUNT,
+  ONLY_LETTERS,
+  ONLY_NUMBERS,
+  OTHER_NAME,
+  DATE
+}
+enum SearchType {
+  BANK,
+  BRANCH,
+  TITLES,
+  MARITAL_STATUS,
+  CITY,
+  EMP_GROUP,
+  OCCUPATION,
+  MAIN_SECTOR,
+  EMP_NAME,
+  AVG_MONTHLY_INCOME,
+  SOURCE_OF_FUNDS,
+  EXPECTED_TURNOVER,
+  PREFERRED_BRANCH,
+  ACCOUNT_OPENING_REASON
+}
+enum ParentPage {
+  REGISTER,
+  LOGIN,
+  HOME,
+  FORGOT_PASSWORD,
+  OWN_TRANSFER_CONFIRM,
+  SEND_MONEY,
+  VERIFY_MOBILE,
+  ADD_ACC,
+  LOGIN_BIO,
+  CHANGE_MOBILE
+}
+
+class AppStrings {
+  static const CLIENT_ID  = "1133222";
+  static const CLIENT_SECRET = "df520f7cf10e68b5e9a04e85577ca4ee";
+
+
+}

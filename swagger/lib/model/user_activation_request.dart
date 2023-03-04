@@ -1,12 +1,11 @@
+// @dart=2.9
 part of swagger.api;
 
 class UserActivationRequest {
-  
   Object contact = null;
-  
 
   String code = null;
-  
+
   UserActivationRequest();
 
   @override
@@ -16,33 +15,33 @@ class UserActivationRequest {
 
   UserActivationRequest.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    contact =
-      
-      
-      new Object.fromJson(json['contact'])
-;
-    code =
-        json['code']
-    ;
+//     contact =
+//
+//
+//       new Object.fromJson(json['contact'])
+// ;
+    code = json['code'];
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'contact': contact,
-      'code': code
-     };
+    return {'contact': contact, 'code': code};
   }
 
   static List<UserActivationRequest> listFromJson(List<dynamic> json) {
-    return json == null ? new List<UserActivationRequest>() : json.map((value) => new UserActivationRequest.fromJson(value)).toList();
+    return json == null
+        ? new List<UserActivationRequest>()
+        : json
+            .map((value) => new UserActivationRequest.fromJson(value))
+            .toList();
   }
 
-  static Map<String, UserActivationRequest> mapFromJson(Map<String, Map<String, dynamic>> json) {
+  static Map<String, UserActivationRequest> mapFromJson(
+      Map<String, Map<String, dynamic>> json) {
     var map = new Map<String, UserActivationRequest>();
     if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new UserActivationRequest.fromJson(value));
+      json.forEach((String key, Map<String, dynamic> value) =>
+          map[key] = new UserActivationRequest.fromJson(value));
     }
     return map;
   }
 }
-
